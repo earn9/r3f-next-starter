@@ -10,15 +10,13 @@ const customHistory = createBrowserHistory({
   // basename: config.urlBasename || ""
 });
 ReactDOM.render(
-  <React.StrictMode>
-    <Router history={customHistory}>
-      <Route
-        component={({ history }) => {
-          window.appHistory = history;
-          return <App />;
-        }}
-      />
-    </Router>
-  </React.StrictMode>,
+  <Router history={customHistory}>
+    <Route
+      component={({ history }) => {
+        window.appHistory = history;
+        return <App />;
+      }}
+    />
+  </Router>,
   rootElement
 );

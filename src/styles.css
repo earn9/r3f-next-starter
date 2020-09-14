@@ -68,4 +68,5 @@ nav {
   position: fixed;
   z-index: 1;
   padding: 14px;
+  top: 0;
 }

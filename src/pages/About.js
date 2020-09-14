@@ -49,7 +49,7 @@ function Font() {
   )
 }
 
-export default function Home() {
+export default function About() {
   return (
     <Canvas colorManagement position={0, 0, -10} style={{ position: 'absolute', top: 0 }}>
       <Box position={[0, -1.5, 1.]}/>

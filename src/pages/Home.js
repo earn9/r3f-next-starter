@@ -33,7 +33,7 @@ function Page({ text, tag, images, textScaleFactor, onReflow, left = false }) {
             {(width, height) => (
               <mesh>
                 <planeBufferGeometry args={[width, height]} />
-                <meshBasicMaterial map={texture} toneMapped={false} />
+                <meshBasicMaterial map={texture} color={0x000000} toneMapped={false} />
               </mesh>
             )}
           </Box>
@@ -93,7 +93,6 @@ function Content({onReflow }) {
             left={!(index % 2)}
             textScaleFactor={scale}
             onReflow={(w, h) => {
-              console.log(w,h)
               sizesRef.current[index] = h
               state.threshold = Math.max(4, (4 / (15.8 * 3)) * sizesRef.current.reduce((acc, e) => acc + e, 0))
             }}
@@ -110,7 +109,7 @@ export default function Home (props) {
   const onScroll = (e) => (state.top = e.target.scrollTop)
   useEffect(() => void onScroll({ target: scrollArea.current }), [])
   const [pages, setPages] = useState(0)
-
+  console.log(pages)
   return (
     <>
       <Canvas
