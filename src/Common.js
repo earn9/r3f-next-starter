@@ -11,7 +11,7 @@ function Box(props) {
   const [active, setActive] = useState(0)
   
   const { scale } = useSpring({
-    scale: props.url === '/about' ? 1. : 2.
+    scale: window.appHistory.location.pathname === '/about' ? 1. : 2.
   })
 
   // Rotate mesh every frame, this is outside of React without overhead
@@ -37,19 +37,16 @@ function Box(props) {
     </animated.mesh>
   )
 }
-export default class Common extends Component {
-  render() {
-    return (
-      <Canvas colorManagement position={0, 0, -10} style={{ position: 'fixed', top: 0 }}>
-        <ambientLight />
-        <pointLight position={[10, 10, 10]} />
-        <Box position={[0, 0, 0]} url={this.props.url} />
-        <EffectComposer>
-          <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} height={300} />
-          <Noise opacity={0.2} />
-          <Vignette eskil={false} offset={0.1} darkness={1.1} />
-        </EffectComposer>
-      </Canvas>
-    )
-  }
+export default function Common() {
+  return (
+    <Canvas
+      colorManagement
+      onCreated={({ gl }) => gl.setClearColor('#fff')}
+      position={0, 0, -10}
+      style={{ position: 'fixed', top: 0 }}
+      gl={{ powerPreference: 'high-performance', alpha: false, antialias: false, stencil: false }}>
+    >
+      <Box position={[0, 0, 0]} />
+    </Canvas>
+  )
 }

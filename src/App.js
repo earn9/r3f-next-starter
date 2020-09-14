@@ -1,13 +1,11 @@
 
-import React, { useRef, Component, useState } from 'react'
+import React from 'react'
 import { Switch, Route, Link } from "react-router-dom";
-import Home from './components/Home'
-import About from './components/About'
+import Home from './pages/Home'
+import About from './pages/About'
 import Common from './Common'
-import create from 'zustand/vanilla';
 
 export default function App() {
-  const [state, setState] = useState('/');
 
   return (
     <>
@@ -15,10 +13,10 @@ export default function App() {
         <Link to='/'>HOME</Link> 
         <Link to='about'> ABOUT </Link> 
       </nav>
-      <Common url={state} />
+      <Common />
       <Switch>
-        <Route exact path='/'><Home handler={setState} /></Route>
-        <Route exact path='/about'><About handler={setState} /></Route>
+        <Route exact path='/'><Home /></Route>
+        <Route exact path='/about'><About /></Route>
       </Switch>
     </>
   )
