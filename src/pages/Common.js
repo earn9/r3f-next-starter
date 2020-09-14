@@ -42,9 +42,12 @@ function Box(props) {
   const [active, setActive] = useState(0)
   let pathname = window.appHistory.location.pathname
 
-  const { scale, color, opacity } = useSpring({
-    scale:  pathname === '/about' ? .25 : 2.5,
-    opacity: pathname === '/about' ? .5 : .1
+  const { scale, opacity } = useSpring({
+    opacity: pathname === '/about' ? .5 : .1,
+    config: {
+      tension: 140,
+      friction: 60
+    }
   })
 
   // Rotate mesh every frame, this is outside of React without overhead
@@ -57,9 +60,6 @@ function Box(props) {
     <animated.mesh
       {...props}
       ref={mesh}
-      scale-x={scale}
-      scale-y={scale}
-      scale-z={scale}
       onClick={(e) => setActive(!active)}
       onPointerOver={(e) => setHover(true)}
       onPointerOut={(e) => setHover(false)}>
