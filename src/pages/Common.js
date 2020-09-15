@@ -5,33 +5,30 @@ import { animated, useSpring } from 'react-spring/three'
 import glsl from "babel-plugin-glsl/macro"
 import {shaderMaterial} from 'drei'
 
-const ColorShiftMaterial = shaderMaterial(
-  { time: 0, opacity: 1. },
+const ColorDepthMaterial = shaderMaterial(
+  { opacity: 1. },
   // fragment shader
   glsl`
     #include <common>
-    // This is used for computing an equivalent of gl_FragCoord.z that is as high precision as possible.
-    // Some platforms compute gl_FragCoord at a lower precision which makes the manually computed value better for
-    // depth-based postprocessing effects. Reproduced on iPad with A10 processor / iPadOS 13.3.1.
-    varying vec2 vHighPrecisionZW;
+    varying float fogDepth;
     void main() {
       
       #include <begin_vertex>
       #include <project_vertex>
-      vHighPrecisionZW = gl_Position.zw;
+      fogDepth = -mvPosition.z;
     }
   `,
   glsl`
     uniform float opacity;
-    varying vec2 vHighPrecisionZW;
+    varying float fogDepth;
     void main() {
-      float fragCoordZ = 0.5 * vHighPrecisionZW[0] / vHighPrecisionZW[1] + 0.5;
-      gl_FragColor = vec4( vec3( 1.0 - fragCoordZ ), opacity );
+      float fogFactor = 1.0 - exp( - 0.05 * fogDepth * fogDepth );
+      gl_FragColor = vec4( vec3( 1.0 ) * fogFactor, opacity );
     }
   `
 )
 
-extend({ ColorShiftMaterial })
+extend({ ColorDepthMaterial })
 
 function Box(props) {
   // This reference will give us direct access to the mesh
@@ -42,9 +39,10 @@ function Box(props) {
   const [active, setActive] = useState(0)
   let pathname = window.appHistory.location.pathname
 
-  const { scale, opacity } = useSpring({
+  const { scale, opacity, position } = useSpring({
     opacity: pathname === '/about' ? .5 : .1,
     scale: pathname === '/about' ? .15 : 1,
+    position: pathname === '/about' ? -2.5 : -1,
     config: {
       // tension: 140,
       friction: 60
@@ -64,11 +62,12 @@ function Box(props) {
       scale-x={scale}
       scale-y={scale}
       scale-z={scale}
+      position-z={position}
       onClick={(e) => setActive(!active)}
       onPointerOver={(e) => setHover(true)}
       onPointerOut={(e) => setHover(false)}>
       <torusKnotBufferGeometry attach="geometry" args={[1., .25, 100, 16]} />
-      <colorShiftMaterial ref={mat} attach="material" color="hotpink" transparent={true} time={1} />
+      <colorDepthMaterial ref={mat} attach="material" color="hotpink" transparent={true} time={1} />
     </animated.mesh>
   )
 }
@@ -85,9 +84,10 @@ function Plane(props) {
   return (
     <animated.mesh
       {...props}
+        rotation-x={Math.PI / 2}
         side={THREE.DoubleSide}
       >
-      <planeBufferGeometry attach="geometry" args={[1, 1]} />
+      <planeBufferGeometry attach="geometry" args={[10, 10]} />
       <meshBasicMaterial attach="material" color={color}/>
     </animated.mesh>
   )
@@ -98,13 +98,13 @@ export default function Common(props) {
   return (
     <Canvas
       colorManagement
-      onCreated={({ gl }) => gl.setClearColor('#f1f1f1')}
+      onCreated={({ gl }) => gl.setClearColor('#888')}
       style={{ position: 'fixed', top: 0 }}
       noEvents
       pixelRatio={1}
       camera={{ position: [0, 0, -3.], far: 100 }}
       gl={{ powerPreference: 'high-performance', alpha: false, antialias: false, stencil: false }}>
-      <Plane />
+      <Plane position={[0, 0, -2.5]} />
 
       <Box position={[0, 0, -2.5]} />
     </Canvas>

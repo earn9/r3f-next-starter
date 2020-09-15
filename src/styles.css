@@ -81,26 +81,28 @@ nav {
   padding: 14px;
   top: 0;
 }
-
+nav a {
+  padding: 7px;
+}
 
 .page-enter {
   opacity: 0;
-  transform: scale(1.1);
+  transform: translateY(-14px);
 }
 
 .page-enter-active {
   opacity: 1;
-  transform: scale(1);
+  transform: translateY(0);
   transition: opacity 1.4s cubic-bezier(0.64, 0, 0.78, 0), transform 1.4s cubic-bezier(0.64, 0, 0.78, 0);
 }
 
 .page-exit {
   opacity: 1;
-  transform: scale(1);
+  transform: translateY(0);
 }
 
 .page-exit-active {
   opacity: 0;
-  transform: scale(0.9);
+  transform: translateY(14px);
   transition: opacity 1.4s cubic-bezier(0.22, 1, 0.36, 1), transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
 }

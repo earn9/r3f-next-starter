@@ -10,7 +10,6 @@ import state from '../state'
 function Page({ text, tag, images, textScaleFactor, onReflow, left = false }) {
   const textures = useLoader(THREE.TextureLoader, images)
   const { viewport } = useThree()
-  console.log(textures)
   const boxProps = {
     centerAnchor: true,
     grow: 1,
@@ -32,13 +31,14 @@ function Page({ text, tag, images, textScaleFactor, onReflow, left = false }) {
           <Box key={index} {...boxProps}>
             {(width, height) => (
               <mesh>
-                <planeBufferGeometry args={[width, height]} />
-                <meshBasicMaterial map={texture} color={0x000000} toneMapped={false} />
+                <planeBufferGeometry attach="geometry"  args={[width, width]} />
+                <meshBasicMaterial map={texture} attach="material" toneMapped={false} />
               </mesh>
             )}
           </Box>
         ))}
       </Box>
+
       <Box marginLeft={left ? 1.5 : 1} marginRight={left ? 1 : 1.5} marginBottom={1}>
         <Text
           bold
@@ -103,7 +103,6 @@ export default function Home (props) {
   const onScroll = (e) => (state.top = e.target.scrollTop)
   useEffect(() => void onScroll({ target: scrollArea.current }), [])
   const [pages, setPages] = useState(0)
-  console.log(pages)
   return (
     <>
       <Canvas
