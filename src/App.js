@@ -21,7 +21,7 @@ export default function App() {
         <CSSTransition
           key={location.key}
           classNames="page"
-          timeout={800}
+          timeout={1500}
         >
           <div className="page">
             <Switch location={location}>
