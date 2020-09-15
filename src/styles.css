@@ -91,7 +91,7 @@ nav {
 .page-enter-active {
   opacity: 1;
   transform: scale(1);
-  transition: opacity 600, transform 600;
+  transition: opacity 1.4s cubic-bezier(0.64, 0, 0.78, 0), transform 1.4s cubic-bezier(0.64, 0, 0.78, 0);
 }
 
 .page-exit {
@@ -102,5 +102,5 @@ nav {
 .page-exit-active {
   opacity: 0;
   transform: scale(0.9);
-  transition: opacity 600, transform 600;
+  transition: opacity 1.4s cubic-bezier(0.22, 1, 0.36, 1), transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
 }

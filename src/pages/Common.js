@@ -47,7 +47,7 @@ function Box(props) {
     scale: pathname === '/about' ? .15 : 1,
     config: {
       // tension: 140,
-      // friction: 60
+      friction: 60
     }
   })
 
