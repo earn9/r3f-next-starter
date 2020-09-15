@@ -39,12 +39,6 @@ function Page({ text, tag, images, textScaleFactor, onReflow, left = false }) {
           </Box>
         ))}
       </Box>
-      <Box marginLeft={1.5} marginRight={1.5} marginTop={2}>
-        <Text position={[left ? 1 : -1, 0.5, 1]} fontSize={textScaleFactor} lineHeight={1} letterSpacing={-0.05} maxWidth={(viewport.width / 4) * 3}>
-          {tag}
-          <meshBasicMaterial color="#cccccc" toneMapped={false} />
-        </Text>
-      </Box>
       <Box marginLeft={left ? 1.5 : 1} marginRight={left ? 1 : 1.5} marginBottom={1}>
         <Text
           bold
