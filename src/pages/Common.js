@@ -44,9 +44,10 @@ function Box(props) {
 
   const { scale, opacity } = useSpring({
     opacity: pathname === '/about' ? .5 : .1,
+    scale: pathname === '/about' ? .15 : 1,
     config: {
-      tension: 140,
-      friction: 60
+      // tension: 140,
+      // friction: 60
     }
   })
 
@@ -60,6 +61,9 @@ function Box(props) {
     <animated.mesh
       {...props}
       ref={mesh}
+      scale-x={scale}
+      scale-y={scale}
+      scale-z={scale}
       onClick={(e) => setActive(!active)}
       onPointerOver={(e) => setHover(true)}
       onPointerOut={(e) => setHover(false)}>
