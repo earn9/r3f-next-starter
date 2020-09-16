@@ -23,3 +23,5 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 - other lib for anim ?
 - Make a private repo for my collection of useful helpers and abstraction
 
+### Next step
+- Gatsby, Nextjs or stay with this architecture ? 
