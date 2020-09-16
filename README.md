@@ -11,8 +11,8 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 - Flag React to experimental and concurrent attribut to Canvas for Double Buffering
 - Add draco && gltfjsx example
+- Add Vector3().lerp() && lerpVectors() examples
 - Gltf animation
-- Lerp example
 - Camera animation + mouse event
 - Add CSS Preprocessor
 - Add Blender + Camera.blend + Python scripts
