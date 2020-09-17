@@ -7,7 +7,9 @@ In the project directory, you can run:
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### Todo [Last week september / First week october]
+### Todo :
+##### [Last week september / First week october]
+
 - Flag React to experimental and concurrent attribut to Canvas for Double Buffering (<-- way too much unstable)
 - share dom events to canvas (HTML && portal)
 - prefer Zustand for states (store.js at root)
@@ -22,7 +24,10 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 - other lib for anim ?
 
 
-#### Deluxe version for tutorial [october]:
+
+#### Deluxe version for tutorial :
+##### [october]
+
 - Camera custom tracker with 2 depth
 - Camera animation
 - Blender + Camera.blend + Python scripts
