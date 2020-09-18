@@ -13,6 +13,8 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 - Flag React to experimental and concurrent attribut to Canvas for Double Buffering (<-- way too much unstable)
 - share dom events to canvas (HTML && portal)
 - prefer Zustand for states (store.js at root)
+- Use use-asset repo to prefetch assets
+- Update architecture based on sharing materials && geos
 - Make helpers + example for DOM sync with html
 - Add draco && gltfjsx example
 - Add Vector3().lerp() && lerpVectors() examples
