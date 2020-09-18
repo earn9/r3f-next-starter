@@ -11,6 +11,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 ##### [Last week september / First week october]
 
 - Flag React to experimental and concurrent attribut to Canvas for Double Buffering (<-- way too much unstable)
+- Use Wouter for route management
 - share dom events to canvas (HTML && portal)
 - prefer Zustand for states (store.js at root)
 - Use use-asset repo to prefetch assets
