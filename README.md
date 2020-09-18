@@ -39,4 +39,4 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 
 #### Self questions :
-- Gatsby, Nextjs or stay with this architecture ? 
+Benchmark NextJS and merge this archi with Next
