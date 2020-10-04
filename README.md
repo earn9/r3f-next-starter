@@ -8,10 +8,14 @@ Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ### Todo :
-##### [Last week september / First week october]
+##### [Month of october]
 
 - Flag React to experimental and concurrent attribut to Canvas for Double Buffering (<-- way too much unstable)
-- Use Wouter for route management
+- Change architecture to Nextjs
+- Use Wouter for route management ?
+- @zeit/next-sass plugin
+- Basic helpers folder
+- Add onBeforeRender examples && clean shaders in helpers example
 - share dom events to canvas (HTML && portal)
 - prefer Zustand for states (store.js at root)
 - Use use-asset repo to prefetch assets
@@ -35,8 +39,3 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 - Camera animation
 - Blender + Camera.blend + Python scripts
 - Make bash script to automate blender
-
-
-
-#### Self questions :
-Benchmark NextJS and merge this archi with Next
